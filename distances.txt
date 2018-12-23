@@ -1,0 +1,16 @@
+SCF_Rattus_no   0
+SCF_Mus_muscu   0.04379562043795615     0
+SCF_Equus_cab   0.17883211678832112     0.18248175182481752     0
+SCF_Felis_cat   0.1970802919708029      0.1970802919708029      0.08759124087591241     0
+                SCF_Rattus_no           SCF_Mus_muscu           SCF_Equus_cab           SCF_Felis_cat
+
+
+from Bio import AlignIO
+
+alignment = AlignIO.read('family_alignment.aln', 'clustal')
+print(alignment)
+
+from Bio.Phylo.TreeConstruction import DistanceCalculator
+calculator = DistanceCalculator('identity')
+dm = calculator.get_distance(alignment)
+print(dm)
